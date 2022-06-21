@@ -3,7 +3,7 @@ package com.snack_ladder_game;
  * -----------------------Snack & Ladder Game-----------------------
  * -> Print Welcome message
  * -> Generate random Num from 1 to 6
- * -> 
+ * -> The Player checks for a Option. They are No Play, Ladder or Snake.
  * 
  * */
 
@@ -11,6 +11,7 @@ public class SnackAndLadderGame {
 	static final int noPlay = 0;
 	static final int ladder = 1;
 	static final int snack = 2;
+	static final int winningPoition = 100;
 	
 	public static int getRandomNum() {
 		int randomNum =  (int) ((Math.random() * 6) + 1);
@@ -23,21 +24,24 @@ public class SnackAndLadderGame {
 		//System.out.println(getRandomNum());
 		int dice = getRandomNum();
 		
-		int checkPlay = (int) Math.floor(Math.random()*10)%3;
-		switch (checkPlay) {
-		case noPlay :
-			System.out.println("Player stay same position..|");
-			break;
+		while (startPosition < winningPoition) {
 			
-		case ladder :
-			startPosition = startPosition + dice;
-			System.out.println("Player Moved ahead..|");
-			break;
-
-		case snack:
-			startPosition = startPosition - dice;
-			System.out.println("Player Moved behind..|");
-			break;
+			int checkPlay = (int) Math.floor(Math.random()*10)%3;
+			switch (checkPlay) {
+			case noPlay :
+				System.out.println("Player stay same position..|");
+				break;
+				
+			case ladder :
+				startPosition = startPosition + dice;
+				System.out.println("Player Moved ahead..|");
+				break;
+	
+			case snack:
+				startPosition = startPosition - dice;
+				System.out.println("Player Moved behind..|");
+				break;
+			}
 		}
 		System.out.println(startPosition);
 	}
