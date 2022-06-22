@@ -4,7 +4,7 @@ package com.snack_ladder_game;
  * -> Print Welcome message
  * -> Generate random Num from 1 to 6
  * -> The Player checks for a Option. They are No Play, Ladder or Snake.
- * 
+ * -> Repeat till the Player reaches the winning position 100.
  * */
 
 public class SnackAndLadderGame { 
@@ -12,6 +12,7 @@ public class SnackAndLadderGame {
 	static final int ladder = 1;
 	static final int snack = 2;
 	static final int winningPoition = 100;
+	static final int minimumPosition = 0;
 	
 	public static int getRandomNum() {
 		int randomNum =  (int) ((Math.random() * 6) + 1);
@@ -20,29 +21,37 @@ public class SnackAndLadderGame {
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Snack & Ladder Game..|");
-		int startPosition = 0;
+		int positionA = 0;
+		int noOfDice = 0;
 		//System.out.println(getRandomNum());
 		int dice = getRandomNum();
 		
-		while (startPosition < winningPoition) {
-			
+		while (positionA < winningPoition) {
+			noOfDice++;
 			int checkPlay = (int) Math.floor(Math.random()*10)%3;
+			
 			switch (checkPlay) {
 			case noPlay :
-				System.out.println("Player stay same position..|");
+				//System.out.println("Player stay same position..|");
 				break;
 				
 			case ladder :
-				startPosition = startPosition + dice;
-				System.out.println("Player Moved ahead..|");
+				positionA = positionA + dice;
+				if(positionA > winningPoition) {
+					positionA = positionA - dice;
+				}
+				//System.out.println(positionA);
+			//System.out.println("Player Moved ahead..|");
 				break;
 	
 			case snack:
-				startPosition = startPosition - dice;
-				System.out.println("Player Moved behind..|");
+				positionA = positionA - dice;
+				//System.out.println("Player Moved behind..|");
 				break;
 			}
 		}
-		System.out.println(startPosition);
+		System.out.println(positionA);
+		System.out.println("No of times Dice rolled to Won game:-> " + noOfDice);
+		System.out.println("U Won.");
 	}
 }
