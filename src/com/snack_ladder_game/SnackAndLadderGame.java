@@ -51,7 +51,7 @@ public class SnackAndLadderGame {
 			}
 		}
 		System.out.println(positionA);
-		System.out.println("No of times Dice rolled to Won game:-> " + noOfDice);
+		System.out.println("No of times Dice rolled to Win game:-> " + noOfDice);
 		System.out.println("U Won.");
 	}
 }
